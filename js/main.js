@@ -7,7 +7,7 @@
  */
 if (localStorage.notificationData == undefined) {
 	let myRequest = new XMLHttpRequest();
-	myRequest.open("GET", "../notification.json");
+	myRequest.open("GET", "notification.json");
 	myRequest.send();
 	myRequest.onreadystatechange = function () {
 		if (this.readyState === 4 && this.status === 200) {
