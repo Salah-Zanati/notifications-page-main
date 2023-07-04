@@ -1,0 +1,248 @@
+:root {
+  --mian-transition: .3s;
+  /* Primary */
+  --red: hsl(1, 90%, 64%);
+  --blue: hsl(219, 85%, 26%);
+  /* Neutral */
+  --white: hsl(0, 0%, 100%);
+  --very-light-grayish-blue: hsl(210, 60%, 98%);
+  --light-grayish-blue-1: hsl(211, 68%, 94%);
+  --light-grayish-blue-2: hsl(205, 33%, 90%);
+  --grayish-blue: hsl(219, 14%, 63%);
+  --dark-grayish-blue: hsl(219, 12%, 42%);
+  --very-dark-blue: hsl(224, 21%, 14%);
+  /* Font family */
+  --font-family: plus-jakarta-sans;
+}
+@font-face {
+  font-family: plus-jakarta-sans;
+  src: url(../assets/fonts/PlusJakartaSans-VariableFont_wght.ttf);
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-family);
+  font-weight: 500;
+  background-color: var(--very-light-grayish-blue);
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-areas: ". page .";
+  min-height: 100vh;
+}
+@media (max-width: 991px) {
+  body {
+    grid-template-columns: 15% 1fr 15%;
+  }
+}
+@media (max-width: 767px) {
+  body {
+    grid-template-columns: 0% 1fr 0%;
+  }
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/** Small */
+@media (min-width: 767px) {
+  .container {
+    width: 750px;
+  }
+}
+/** Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/** Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--blue-clr);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blue-clr-alt);
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+}
+p {
+  font-size: 15px;
+}
+/*/> Page */
+.page {
+  background-color: white;
+  margin: 50px 0;
+  padding: 30px;
+  border-radius: 20px;
+  grid-area: page;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (max-width: 767px) {
+  .page {
+    margin: 0;
+    border-radius: 0;
+  }
+}
+/*/> Head class */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.head div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.head .notifications-count {
+  background-color: var(--blue);
+  color: white;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+.head>p {
+  color: var(--dark-grayish-blue);
+  cursor: pointer;
+  transition: var(--mian-transition);
+}
+.head>p:hover {
+  color: var(--blue);
+}
+/*/< Head class */
+/*/> Body class  */
+.body {
+  flex: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+/*/> notification-box */
+.notification-box {
+  padding: 10px;
+  background-color: var(--white);
+  display: flex;
+  gap: 10px;
+  border-radius: 10px;
+}
+.notification-box.unread {
+  background-color: var(--very-light-grayish-blue);
+}
+.notification-box img {
+  width: 50px;
+  height: 50px;
+}
+/*/> notification-info */
+.notification-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+/*/> info */
+.notification-info .info {
+  display: flex;
+  justify-content: space-between;
+}
+.notification-info .info>div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.notification-box.unread .notification-info .info p:first-of-type {
+  position: relative;
+}
+.notification-box.unread .notification-info .info p:first-of-type:after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  height: 5px;
+  width: 5px;
+  background-color: var(--red);
+  top: -2.5px;
+  right: -5px;
+  border-radius: 5px;
+}
+.notification-info .info p .name {
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--mian-transition);
+}
+.notification-info .info p .action {
+  color: var(--dark-grayish-blue);
+}
+.notification-info .info p .action-place {
+  font-weight: 800;
+  cursor: pointer;
+}
+.notification-info .info p .action-place.group-type {
+  color: var(--blue);
+}
+.notification-info .info p .action-place.post-type {
+  color: var(--dark-grayish-blue);
+  transition: var(--mian-transition);
+}
+.notification-info .info p .name:hover,
+.notification-info .info p .action-place.post-type:hover {
+  color: var(--blue);
+}
+.notification-info .info .action-time {
+  color: var(--dark-grayish-blue);
+}
+.notification-info .info .pictur-post {
+  border: 0px solid var(--light-grayish-blue-1);
+  border-radius: 10px;
+  transition: var(--mian-transition);
+}
+.notification-info .info .pictur-post:hover {
+  border-width: 3px;
+}
+/*/< info */
+/*/< notification-info */
+/*/> details */
+.notification-info .details p {
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--grayish-blue);
+  cursor: pointer;
+  transition: var(--mian-transition);
+}
+.notification-info .details p:hover {
+  background-color: var(--light-grayish-blue-1);
+}
+/*/< details */
+/*/< notification-box */
+/*/< Body class  */
+/*/< Page */
